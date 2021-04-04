@@ -1,0 +1,26 @@
+server:
+  port: 80
+
+eureka:
+  client:
+    register-with-eureka: false #表示自己是否被注册进入服务中心,true便是注入,false 便是不注入
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka
+
+
+#设置feign客户端等待时间(OpenFeign默认支持ribbon)
+ribbon:
+  #指连接建立之后,从服务器读取到可用资源的时间
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+logging:
+  level:
+    #是指feign日志以什么级别监控哪个接口
+    com.springcloud.service.PaymentFeignService: debug
+#feign:
+#  httpclient:
+#    #指建立连接所用的时间,两端(客户端服务端连接所需要的时间)
+#    connection-timeout: 5
+#    #指连接建立之后,从服务器读取到可用资源的时间
+#    connection-timer-repeat: 5
